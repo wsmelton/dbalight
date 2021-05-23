@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Configuration>
+  <ViewDefinitions>
+    <!-- Command Name? -->
+    <View>
+      <Name>ClassOrTypeName</Name>
+      <ViewSelectedBy>
+        <TypeName>ClassOrTypeName</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Col1</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Col2</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+  </ViewDefinitions>
+</Configuration>
