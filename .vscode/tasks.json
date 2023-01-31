@@ -1,0 +1,58 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+      {
+          "label": "changelog commits",
+          "type":"shell",
+          "command": "git reflog --pretty=format:'* [%h](https://github.com/wsmelton/dbalight/commits/%H) %s' | clip",
+          "problemMatcher": "$msCompile"
+      },
+      {
+          "label": "build-library",
+          "type": "shell",
+          "command": "Invoke-Build -File ./build.library.ps1",
+          "problemMatcher": "$msCompile"
+      },
+      {
+          "label": "build-docs",
+          "type": "shell",
+          "command": "Invoke-Build -File ./build.ps1 -Task docs",
+          "problemMatcher": "$msCompile"
+      },
+      {
+          "label": "build-debug",
+          "type": "shell",
+          "command": "Invoke-Build -File ./build.ps1 -Configuration Debug",
+          "problemMatcher": "$msCompile",
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          }
+      },
+      {
+          "label": "build",
+          "command": "dotnet",
+          "type": "shell",
+          "args": [
+              "build",
+              "${workspaceFolder}/src/dbalight",
+              "/property:GenerateFullPaths=true",
+              "/consoleloggerparameters:NoSummary"
+          ],
+          "group": "build",
+          "presentation": {
+              "reveal": "silent"
+          },
+          "problemMatcher": "$msCompile"
+      }
+  ],
+  "inputs": [
+      {
+          "id": "commitcount",
+          "type": "promptString",
+          "description": "Number of your commits to copy to the clipboard"
+      }
+  ]
+}

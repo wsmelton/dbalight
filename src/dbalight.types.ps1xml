@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf=16"?>
+<Types>
+  <Type>
+    <Name>Class_Name</Name>
+    <Members>
+      <AliasProperty>
+        <Name>AliasPropertyName</Name>
+        <ReferencedMemberName>RealPropertyName</ReferencedMemberName>
+      </AliasProperty>
+    </Members>
+  </Type>
+</Types>
