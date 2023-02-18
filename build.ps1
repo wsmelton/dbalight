@@ -46,7 +46,7 @@ if (Get-Module dbalight) {
     Remove-Module dbalight -Force
 }
 
-$imported = Import-Module "$PSScriptRoot\src\dbalight.psd1" -Force -PassThru
+$imported = Import-Module "$PSScriptRoot\src\output\dbalight.psd1" -Force -PassThru
 
 if ($PSBoundParameters['PublishDocs']) {
     if ($PSEdition -eq 'Desktop') {
@@ -87,9 +87,9 @@ if (-not $PSBoundParameters['SkipTests']) {
 }
 
 if ($PSBoundParameters['Prerelease']) {
-    $foundModule = Find-Module -Name $moduleName -AllowPrerelease:$Prerelease
+    $foundModule = Find-Module -Name $moduleName -AllowPrerelease:$Prerelease -Repository PSGallery
 } else {
-    $foundModule = Find-Module -Name $moduleName
+    $foundModule = Find-Module -Name $moduleName -Repository PSGallery
 }
 
 if ($foundModule.Version -ge $imported.Version) {
@@ -105,7 +105,7 @@ if ($tests.FailedCount -eq 0 -or $PSBoundParameters['SkipTests']) {
         try {
             Write-Host "Publishing $moduleName [$($imported.Version)] to PowerShell Gallery"
 
-            Publish-Module -Path $moduleTempPath -NuGetApiKey $gallerykey
+            Publish-Module -Path $moduleTempPath -NuGetApiKey $gallerykey -Repository PSGallery
             Write-Host "successfully published to PS Gallery"
         } catch {
             Write-Warning "Publish failed: $_"
