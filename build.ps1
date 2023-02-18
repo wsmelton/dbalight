@@ -44,38 +44,38 @@ if (Get-Module dbalight) {
 }
 $imported = Import-Module "$PSScriptRoot\src\dbalight.psd1" -Force -PassThru
 
-# if ($PSBoundParameters['PublishDocs']) {
-#     if ($PSEdition -eq 'Desktop') {
-#         Write-Warning "Doc processing has to run under PowerShell Core"
-#         return
-#     }
-#     $docCommandPath = "$PSScriptRoot\docs\collections\_commands\"
-#     Write-Host "Removing old command docs [$docCommandPath]" -ForegroundColor Black -BackgroundColor DarkCyan
-#     Remove-Item $docCommandPath -Filter *.md -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue -Verbose
+if ($PSBoundParameters['PublishDocs']) {
+    if ($PSEdition -eq 'Desktop') {
+        Write-Warning "Doc processing has to run under PowerShell Core"
+        return
+    }
+    $docCommandPath = "$PSScriptRoot\docs\collections\_commands\"
+    Write-Host "Removing old command docs [$docCommandPath]" -ForegroundColor Black -BackgroundColor DarkCyan
+    Remove-Item $docCommandPath -Filter *.md -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue -Verbose
 
-#     Import-Module platyPS
-#     $cmdParams = @{
-#         Module      = $moduleName
-#         CommandType = 'Function'
-#     }
-#     $commands = Get-Command @cmdParams
+    Import-Module platyPS
+    $cmdParams = @{
+        Module      = $moduleName
+        CommandType = 'Function'
+    }
+    $commands = Get-Command @cmdParams
 
-#     Write-Host "Generating new command docs [$docCommandPath]" -ForegroundColor Black -BackgroundColor DarkCyan
-#     foreach ($cmd in $commands) {
-#         switch ($cmd.Name) {
-#             { $_ -match 'Db' } { $category = 'database' }
-#             { $_ -match 'Instance' } { $category = 'instance' }
-#             default { $category = 'general' }
-#         }
-#         $metadata = @{
-#             'category' = $category
-#             'title'    = $cmd.Name
-#         }
+    Write-Host "Generating new command docs [$docCommandPath]" -ForegroundColor Black -BackgroundColor DarkCyan
+    foreach ($cmd in $commands) {
+        switch ($cmd.Name) {
+            { $_ -match 'Db' } { $category = 'database' }
+            { $_ -match 'Instance' } { $category = 'instance' }
+            default { $category = 'general' }
+        }
+        $metadata = @{
+            'category' = $category
+            'title'    = $cmd.Name
+        }
 
-#         New-MarkdownHelp -OutputFolder $docCommandPath -Command $cmd.Name -Metadata $metadata -Force
-#     }
-#     return
-# }
+        New-MarkdownHelp -OutputFolder $docCommandPath -Command $cmd.Name -Metadata $metadata -Force
+    }
+    return
+}
 
 if (-not $PSBoundParameters['SkipTests']) {
     Import-Module Pester
