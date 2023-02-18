@@ -1,3 +1,4 @@
+#requires -Module InvokeBuild
 [cmdletbinding()]
 param(
     [Parameter(ParameterSetName = 'docs')]
@@ -34,14 +35,17 @@ $staging = "$env:TEMP\dbalight_staging\"
 $git = git status
 if ($git[1] -notmatch "Your branch is up to date" -and (-not $PSBoundParameters.ContainsKey('PublishDocs'))) {
     Pop-Location
-    throw "Local branch has commits not in GitHub"
+    throw "Local branch is dirty"
 }
+
 if (Test-Path $staging) {
     Remove-Item -Recurse -Force $staging
 }
+
 if (Get-Module dbalight) {
     Remove-Module dbalight -Force
 }
+
 $imported = Import-Module "$PSScriptRoot\src\dbalight.psd1" -Force -PassThru
 
 if ($PSBoundParameters['PublishDocs']) {
@@ -49,14 +53,14 @@ if ($PSBoundParameters['PublishDocs']) {
         Write-Warning "Doc processing has to run under PowerShell Core"
         return
     }
-    $docCommandPath = "$PSScriptRoot\docs\collections\_commands\"
+    $docCommandPath = "$PSScriptRoot\docs\"
     Write-Host "Removing old command docs [$docCommandPath]" -ForegroundColor Black -BackgroundColor DarkCyan
     Remove-Item $docCommandPath -Filter *.md -Recurse -Force -Confirm:$false -ErrorAction SilentlyContinue -Verbose
 
     Import-Module platyPS
     $cmdParams = @{
         Module      = $moduleName
-        CommandType = 'Function'
+        CommandType = 'Cmdlet'
     }
     $commands = Get-Command @cmdParams
 
