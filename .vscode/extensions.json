@@ -2,13 +2,14 @@
   // See http://go.microsoft.com/fwlink/?LinkId=827846
   // for the documentation about the extensions.json format
   "recommendations": [
-    "ms-vscode.PowerShell",
+    "ms-vscode.powershell",
     "usernamehw.errorlens",
     "streetsidesoftware.code-spell-checker",
     "mhutchie.git-graph",
     "github.vscode-pull-request-github",
     "oderwat.indent-rainbow",
     "2gua.rainbow-brackets",
-    "vscode-icons-team.vscode-icons"
+    "vscode-icons-team.vscode-icons",
+    "ms-dotnettools.csdevkit"
   ]
 }
