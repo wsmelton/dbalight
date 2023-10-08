@@ -2,11 +2,11 @@
 
 You've found DbaLight early, really early. The core structure of the module is created, but still working out a few more things such as adding commands and getting the build process in a good state for automating the releases. I'm working on this project as time permits with family and work.
 
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/wsmelton)
+[![badge for GitHub sponsorship](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/wsmelton)
 
 > If you feel that this project would benefit you or your team please consider sponsoring
 
-# dbalight
+## dbalight
 
 🔦 into your SQL Server to find, test, troubleshoot or report on your environment
 
