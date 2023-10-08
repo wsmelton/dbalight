@@ -5,5 +5,4 @@
 [Ll]og/
 [Ll]ogs/
 
-src/output/*
-release.md
+[Oo]utput/
