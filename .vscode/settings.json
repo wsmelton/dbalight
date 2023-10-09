@@ -9,14 +9,17 @@
     "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
     "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
     "powershell.codeFormatting.useCorrectCasing": true,
-
     // newer versions of VS Code now have ability to format modifications
     //  instead of whole file
     "editor.formatOnSave": false,
-
     // selecting variables to include the '$':
     "[powershell]": {
         "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?"
+    },
+    "files.associations": {
+        "*.txt": "plaintext",
+        "*.json": "jsonc",
+        ".github/*.yml": "GitHub Actions"
     },
     "powershell.codeFormatting.addWhitespaceAroundPipe": true,
     "markdownlint.config": {

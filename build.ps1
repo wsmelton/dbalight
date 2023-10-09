@@ -47,5 +47,5 @@ if ($dll) {
     Write-Host " - Build $($Module.Name) $SemVer" -ForegroundColor Cyan
     Build-Module -SourcePath ./source -Target CleanBuild -OutputDirectory $OutputDirectory
 } else {
-    Write-Warning "No build occurred, unable to find DLL library: $dllFileName"
+    Write-Warning "Module-Builder could not run, unable to find DLL library: $dllFileName"
 }

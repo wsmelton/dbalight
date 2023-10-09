@@ -10,6 +10,6 @@
     VersionedOutputDirectory = $true
     CopyDirectories = @(
         'en-US'
-        'dbalight/bin/Release/netstandard2.0/*'
+        './dbalight/bin/Release/net6.0/*'
     )
 }

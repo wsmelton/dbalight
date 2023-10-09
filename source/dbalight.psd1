@@ -19,5 +19,5 @@
             ReleaseNotes = 'https://github.com/wsmelton/dbalight/blob/main/CHANGELOG.md'
         }
     }
-    DefaultCommandPrefix = 'Dl'
+    DefaultCommandPrefix = 'Dbl'
 }
