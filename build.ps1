@@ -45,7 +45,7 @@ $dll = Get-ChildItem -Recurse -File -Filter $dllFileName | Select-Object -First 
 if ($dll) {
     Write-Host "dotnet build successful, found $($dll.FullName)"
     Write-Host " - Build $($Module.Name) $SemVer" -ForegroundColor Cyan
-    Build-Module -SourcePath ./source -Target CleanBuild -OutputDirectory $OutputDirectory
+    Build-Module -SourcePath ./source -Target CleanBuild -OutputDirectory $OutputDirectory -Verbose
 } else {
     Write-Warning "Module-Builder could not run, unable to find DLL library: $dllFileName"
 }

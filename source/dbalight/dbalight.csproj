@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>dbalight</RootNamespace>
     <TargetFramework>net6.0</TargetFramework>
-    <RuntimeIdentifier>osx.12-arm64</RuntimeIdentifier>
+    <!-- <RuntimeIdentifier>osx.12-arm64</RuntimeIdentifier> -->
     <AssemblyName>dbalight</AssemblyName>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
