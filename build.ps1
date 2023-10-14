@@ -15,6 +15,9 @@ param(
     [string]
     $SemVer
 )
+if (-not (Test-Path "$PSScriptRoot/.git")) {
+    throw "Build process is not supported unless you have cloned this project."
+}
 
 $ErrorView = 'DetailedView'
 $ErrorActionPreference = "Stop"
